@@ -33,6 +33,7 @@ class MyApp extends StatelessWidget {
           title: 'ToDo',
           debugShowCheckedModeBanner: false,
           theme: ThemeData(
+            scaffoldBackgroundColor: Colors.white,
             fontFamily: GoogleFonts.poppins().fontFamily,
           ),
           initialRoute: 'home',
