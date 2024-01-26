@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
-import 'package:todo/providers/universal_provider.dart';
-import 'package:todo/screens/completed_screen.dart';
-import 'package:todo/screens/todos_screen.dart';
+import '../providers/universal_provider.dart';
+import '../screens/completed_screen.dart';
+import '../screens/todos_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -12,15 +13,30 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  final List<Widget> pages = [
+    const TodosScren(),
+    const CompletedScreen(),
+  ];
+
+  @override
+  void initState() {
+    Provider.of<UniversalProvider>(context, listen: false).loadData();
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
-    const List<Widget> pages = [
-      TodosScren(),
-      CompletedScreen(),
-    ];
-
     return Consumer<UniversalProvider>(
       builder: (context, universalProvider, child) => Scaffold(
+        appBar: AppBar(
+          title: const Text('ToDo'),
+          centerTitle: true,
+          titleTextStyle: TextStyle(
+            fontWeight: FontWeight.bold,
+            color: Colors.deepPurple,
+            fontSize: 20.sp,
+          ),
+        ),
         body: PageView.builder(
           controller: universalProvider.pageController,
           onPageChanged: (index) => universalProvider.currentScreenInd = index,

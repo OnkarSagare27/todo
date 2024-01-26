@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import '../providers/universal_provider.dart';
 
 class CompletedScreen extends StatefulWidget {
   const CompletedScreen({super.key});
@@ -10,11 +12,14 @@ class CompletedScreen extends StatefulWidget {
 class _CompletedScreenState extends State<CompletedScreen> {
   @override
   Widget build(BuildContext context) {
-    return const Center(
-      child: Text(
-        'Comp',
-        style: TextStyle(color: Colors.black),
-      ),
+    return Consumer<UniversalProvider>(
+      builder: (context, universalProvider, child) =>
+          universalProvider.dataModel == null
+              ? const Center(
+                  child: CircularProgressIndicator(
+                  color: Colors.deepPurple,
+                ))
+              : const Scaffold(),
     );
   }
 }
