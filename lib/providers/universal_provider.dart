@@ -1,11 +1,13 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:todo/models/task_model.dart';
 import '../models/data_model.dart';
+import '../widgets/add_task_dialog_box.dart';
 
 class UniversalProvider extends ChangeNotifier {
   final PageController pageController = PageController();
+  Color selectedColor = Colors.pink;
 
   DataModel? _dataModel;
   DataModel? get dataModel => _dataModel;
@@ -24,6 +26,14 @@ class UniversalProvider extends ChangeNotifier {
     _dataModel = dataModelString != null
         ? DataModel.fromJson(jsonDecode(dataModelString))
         : DataModel(0, []);
+
+    notifyListeners();
+  }
+
+  void addTask(TaskModel taskModel) async {
+    SharedPreferences preff = await SharedPreferences.getInstance();
+    _dataModel!.tasks.add(taskModel);
+    await preff.setString('dataModel', jsonEncode(_dataModel!.toJson()));
     notifyListeners();
   }
 
@@ -31,53 +41,14 @@ class UniversalProvider extends ChangeNotifier {
     showDialog(
       context: context,
       builder: (BuildContext context) {
-        return Center(
-          child: SingleChildScrollView(
-            child: AlertDialog(
-              backgroundColor: Colors.white,
-              surfaceTintColor: Colors.white,
-              title: Text(
-                'Add Task',
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  color: Colors.deepPurple,
-                  fontSize: 15.sp,
-                ),
-              ),
-              content: Column(
-                children: [
-                  const TextField(
-                    maxLines: 1,
-                    autocorrect: false,
-                    decoration: InputDecoration(
-                      hintText: 'Title',
-                    ),
-                  ),
-                  SizedBox(
-                    height: 30.h,
-                  ),
-                  const TextField(
-                    maxLines: 2,
-                    decoration: InputDecoration(
-                      hintText: 'Descrption',
-                    ),
-                  ),
-                ],
-              ),
-              actions: <Widget>[
-                TextButton(
-                  onPressed: () {
-                    Navigator.of(context).pop();
-                  },
-                  child: const Text('Add'),
-                ),
-                TextButton(
-                  onPressed: () {
-                    Navigator.of(context).pop();
-                  },
-                  child: const Text('Cancel'),
-                ),
-              ],
+        return AddTaskDialog(
+          onAddPressed: (color, title, description) => addTask(
+            TaskModel(
+              id: _dataModel!.lastInd + 1,
+              status: 'Incomplete',
+              name: title,
+              description: description,
+              argb: [color.alpha, color.red, color.green, color.blue],
             ),
           ),
         );

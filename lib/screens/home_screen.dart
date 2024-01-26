@@ -31,6 +31,7 @@ class _HomeScreenState extends State<HomeScreen> {
         appBar: AppBar(
           title: const Text('ToDo'),
           centerTitle: true,
+          surfaceTintColor: Colors.white,
           titleTextStyle: TextStyle(
             fontWeight: FontWeight.bold,
             color: Colors.deepPurple,
