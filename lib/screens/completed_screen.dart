@@ -10,6 +10,11 @@ class CompletedScreen extends StatefulWidget {
 class _CompletedScreenState extends State<CompletedScreen> {
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return const Center(
+      child: Text(
+        'Comp',
+        style: TextStyle(color: Colors.black),
+      ),
+    );
   }
 }

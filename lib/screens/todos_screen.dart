@@ -10,6 +10,11 @@ class TodosScren extends StatefulWidget {
 class _TodosScrenState extends State<TodosScren> {
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return const Center(
+      child: Text(
+        'Todo',
+        style: TextStyle(color: Colors.black),
+      ),
+    );
   }
 }
