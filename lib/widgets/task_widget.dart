@@ -20,17 +20,24 @@ class _TaskTileState extends State<TaskTile> {
   void initState() {
     color = Color.fromARGB(widget.taskModel.argb[0], widget.taskModel.argb[1],
         widget.taskModel.argb[2], widget.taskModel.argb[3]);
-
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
     return Consumer<UniversalProvider>(
-      builder: (context, universalProvider, child) => InkWell(
-        borderRadius: const BorderRadius.all(Radius.circular(8)),
+        builder: (context, universalProvider, child) {
+      color = Color.fromARGB(
+        widget.taskModel.argb[0],
+        widget.taskModel.argb[1],
+        widget.taskModel.argb[2],
+        widget.taskModel.argb[3],
+      );
+      return InkWell(
+        borderRadius: BorderRadius.all(Radius.circular(8.r)),
         onTap: () => setState(() => _isClicked = !_isClicked),
         child: AnimatedContainer(
+          key: GlobalKey(),
           duration: const Duration(seconds: 1000),
           curve: Curves.easeInOut,
           padding: EdgeInsets.symmetric(
@@ -39,8 +46,8 @@ class _TaskTileState extends State<TaskTile> {
           ),
           decoration: BoxDecoration(
             color: color.withOpacity(0.2),
-            borderRadius: const BorderRadius.all(
-              Radius.circular(8),
+            borderRadius: BorderRadius.all(
+              Radius.circular(8.r),
             ),
           ),
           child: Column(
@@ -54,8 +61,8 @@ class _TaskTileState extends State<TaskTile> {
                       width: 4,
                       decoration: BoxDecoration(
                         color: color,
-                        borderRadius: const BorderRadius.all(
-                          Radius.circular(20),
+                        borderRadius: BorderRadius.all(
+                          Radius.circular(20.r),
                         ),
                       ),
                     ),
@@ -95,10 +102,10 @@ class _TaskTileState extends State<TaskTile> {
                 ),
               if (_isClicked)
                 Container(
-                  decoration: const BoxDecoration(
+                  decoration: BoxDecoration(
                     color: Colors.white,
                     borderRadius: BorderRadius.all(
-                      Radius.circular(8),
+                      Radius.circular(8.r),
                     ),
                   ),
                   child: Row(
@@ -124,18 +131,16 @@ class _TaskTileState extends State<TaskTile> {
                               ),
                             ),
                       IconButton(
-                        onPressed: () => setState(
-                          () => _isClicked = true,
-                        ),
+                        onPressed: () =>
+                            universalProvider.deleteTask(widget.taskModel.id),
                         icon: Icon(
                           Icons.delete,
                           color: color,
                         ),
                       ),
                       IconButton(
-                        onPressed: () => setState(
-                          () => _isClicked = true,
-                        ),
+                        onPressed: () => universalProvider.showEditTaskDialog(
+                            context, widget.taskModel),
                         icon: Icon(
                           Icons.edit_note_rounded,
                           color: color,
@@ -147,7 +152,7 @@ class _TaskTileState extends State<TaskTile> {
             ],
           ),
         ),
-      ),
-    );
+      );
+    });
   }
 }

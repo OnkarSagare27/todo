@@ -5,6 +5,7 @@ import 'package:todo/models/task_model.dart';
 import 'package:todo/widgets/task_widget.dart';
 import '../models/data_model.dart';
 import '../widgets/add_task_dialog_box.dart';
+import '../widgets/edit_task_dialog_box.dart';
 
 class UniversalProvider extends ChangeNotifier {
   final PageController pageController = PageController();
@@ -61,10 +62,34 @@ class UniversalProvider extends ChangeNotifier {
     notifyListeners();
   }
 
+  void deleteTask(int taskId) async {
+    SharedPreferences preff = await SharedPreferences.getInstance();
+    _dataModel!.tasks
+        .removeAt(_dataModel!.tasks.indexWhere((task) => task.id == taskId));
+    await preff.setString('dataModel', jsonEncode(_dataModel!.toJson()));
+    refreshLists();
+    notifyListeners();
+  }
+
   void addTask(TaskModel taskModel) async {
     SharedPreferences preff = await SharedPreferences.getInstance();
-    _dataModel!.tasks.add(taskModel);
+    _dataModel!.tasks.insert(0, taskModel);
     _dataModel!.lastInd += 1;
+    await preff.setString('dataModel', jsonEncode(_dataModel!.toJson()));
+    if (_currentScreenInd == 1) {
+      await Future.delayed(const Duration(milliseconds: 100));
+      pageController.animateToPage(0,
+          duration: const Duration(milliseconds: 150), curve: Curves.linear);
+      _currentScreenInd = 0;
+    }
+    refreshLists();
+    notifyListeners();
+  }
+
+  void updateTask(TaskModel taskModel) async {
+    SharedPreferences preff = await SharedPreferences.getInstance();
+    _dataModel!.tasks[_dataModel!.tasks
+        .indexWhere((task) => task.id == taskModel.id)] = taskModel;
     await preff.setString('dataModel', jsonEncode(_dataModel!.toJson()));
     refreshLists();
     notifyListeners();
@@ -84,6 +109,18 @@ class UniversalProvider extends ChangeNotifier {
               argb: [color.alpha, color.red, color.green, color.blue],
             ),
           ),
+        );
+      },
+    );
+  }
+
+  void showEditTaskDialog(BuildContext context, TaskModel taskModel) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return EditTaskDialog(
+          taskModel: taskModel,
+          onSavePressed: (model) => updateTask(model),
         );
       },
     );

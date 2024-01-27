@@ -28,6 +28,7 @@ class _AddTaskDialogState extends State<AddTaskDialog> {
       child: SingleChildScrollView(
         child: AlertDialog(
           backgroundColor: Colors.white,
+          surfaceTintColor: Colors.white,
           title: Text(
             'Add Task',
             style: TextStyle(
@@ -36,118 +37,142 @@ class _AddTaskDialogState extends State<AddTaskDialog> {
               fontSize: 15.sp,
             ),
           ),
-          content: Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Container(
-                margin: EdgeInsets.only(right: 20.w),
-                width: 4,
-                height: 210.h,
-                decoration: BoxDecoration(
-                  color: selectedColor,
-                  borderRadius: const BorderRadius.all(
-                    Radius.circular(20),
+          content: IntrinsicHeight(
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Container(
+                  margin: EdgeInsets.only(right: 20.w),
+                  width: 4,
+                  decoration: BoxDecoration(
+                    color: selectedColor,
+                    borderRadius: BorderRadius.all(
+                      Radius.circular(20.r),
+                    ),
                   ),
                 ),
-              ),
-              Expanded(
-                child: Column(
-                  children: [
-                    TextField(
-                      controller: titleController,
-                      maxLines: 1,
-                      style: TextStyle(
-                          fontWeight: FontWeight.bold, fontSize: 15.sp),
-                      autocorrect: false,
-                      decoration: InputDecoration(
-                        labelText: 'Title',
-                        labelStyle: TextStyle(
-                          fontSize: 12.sp,
-                          fontWeight: FontWeight.normal,
-                        ),
-                        errorText: titleError,
-                      ),
-                    ),
-                    SizedBox(
-                      height: 30.h,
-                    ),
-                    TextField(
-                      controller: descriptionController,
-                      maxLines: 2,
-                      autocorrect: false,
-                      style: TextStyle(
-                        fontWeight: FontWeight.w500,
-                        fontSize: 14.sp,
-                      ),
-                      decoration: InputDecoration(
-                        labelText: 'Description',
-                        labelStyle: TextStyle(
-                          fontSize: 12.sp,
-                          fontWeight: FontWeight.normal,
+                Expanded(
+                  child: Column(
+                    children: [
+                      TextField(
+                        controller: titleController,
+                        maxLines: 1,
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold, fontSize: 15.sp),
+                        autocorrect: false,
+                        decoration: InputDecoration(
+                          labelText: 'Title',
+                          labelStyle: TextStyle(
+                            fontSize: 12.sp,
+                            fontWeight: FontWeight.normal,
+                          ),
+                          errorText: titleError,
                         ),
                       ),
-                    ),
-                    SizedBox(
-                      height: 20.h,
-                    ),
-                    Row(
-                      children: [
-                        Radio<Color>(
-                          fillColor:
-                              const MaterialStatePropertyAll(Colors.deepPurple),
-                          focusColor: Colors.deepPurple,
-                          value: Colors.deepPurple,
-                          groupValue: selectedColor,
-                          onChanged: (color) {
-                            setState(() => selectedColor = color!);
-                          },
+                      SizedBox(
+                        height: 30.h,
+                      ),
+                      TextField(
+                        controller: descriptionController,
+                        maxLines: 2,
+                        autocorrect: false,
+                        style: TextStyle(
+                          fontWeight: FontWeight.w500,
+                          fontSize: 14.sp,
                         ),
-                        Radio<Color>(
-                          fillColor:
-                              const MaterialStatePropertyAll(Colors.orange),
-                          focusColor: Colors.orange,
-                          value: Colors.orange,
-                          groupValue: selectedColor,
-                          onChanged: (color) {
-                            setState(() => selectedColor = color!);
-                          },
+                        decoration: InputDecoration(
+                          labelText: 'Description',
+                          labelStyle: TextStyle(
+                            fontSize: 12.sp,
+                            fontWeight: FontWeight.normal,
+                          ),
                         ),
-                        Radio<Color>(
-                          fillColor:
-                              const MaterialStatePropertyAll(Colors.blue),
-                          focusColor: Colors.blue,
-                          value: Colors.blue,
-                          groupValue: selectedColor,
-                          onChanged: (color) {
-                            setState(() => selectedColor = color!);
-                          },
+                      ),
+                      SizedBox(
+                        height: 20.h,
+                      ),
+                      SingleChildScrollView(
+                        scrollDirection: Axis.horizontal,
+                        child: Row(
+                          children: [
+                            Radio<Color>(
+                              fillColor: const MaterialStatePropertyAll(
+                                  Colors.deepPurple),
+                              focusColor: Colors.deepPurple,
+                              value: Colors.deepPurple,
+                              groupValue: selectedColor,
+                              onChanged: (color) {
+                                setState(() => selectedColor = color!);
+                              },
+                            ),
+                            Radio<Color>(
+                              fillColor:
+                                  const MaterialStatePropertyAll(Colors.orange),
+                              focusColor: Colors.orange,
+                              value: Colors.orange,
+                              groupValue: selectedColor,
+                              onChanged: (color) {
+                                setState(() => selectedColor = color!);
+                              },
+                            ),
+                            Radio<Color>(
+                              fillColor:
+                                  const MaterialStatePropertyAll(Colors.blue),
+                              focusColor: Colors.blue,
+                              value: Colors.blue,
+                              groupValue: selectedColor,
+                              onChanged: (color) {
+                                setState(() => selectedColor = color!);
+                              },
+                            ),
+                            Radio<Color>(
+                              fillColor:
+                                  const MaterialStatePropertyAll(Colors.red),
+                              focusColor: Colors.red,
+                              value: Colors.red,
+                              groupValue: selectedColor,
+                              onChanged: (color) {
+                                setState(() => selectedColor = color!);
+                              },
+                            ),
+                            Radio<Color>(
+                              fillColor:
+                                  const MaterialStatePropertyAll(Colors.green),
+                              focusColor: Colors.green,
+                              value: Colors.green,
+                              groupValue: selectedColor,
+                              onChanged: (color) {
+                                setState(() => selectedColor = color!);
+                              },
+                            ),
+                            Radio<Color>(
+                              fillColor:
+                                  const MaterialStatePropertyAll(Colors.brown),
+                              focusColor: Colors.brown,
+                              value: Colors.brown,
+                              groupValue: selectedColor,
+                              onChanged: (color) {
+                                setState(() => selectedColor = color!);
+                              },
+                            ),
+                            Radio<Color>(
+                              fillColor:
+                                  const MaterialStatePropertyAll(Colors.yellow),
+                              focusColor: Colors.yellow,
+                              value: Colors.yellow,
+                              groupValue: selectedColor,
+                              onChanged: (color) {
+                                setState(() => selectedColor = color!);
+                              },
+                            ),
+                          ],
                         ),
-                        Radio<Color>(
-                          fillColor:
-                              const MaterialStatePropertyAll(Colors.yellow),
-                          focusColor: Colors.yellow,
-                          value: Colors.yellow,
-                          groupValue: selectedColor,
-                          onChanged: (color) {
-                            setState(() => selectedColor = color!);
-                          },
-                        ),
-                        Radio<Color>(
-                          fillColor:
-                              const MaterialStatePropertyAll(Colors.green),
-                          focusColor: Colors.green,
-                          value: Colors.green,
-                          groupValue: selectedColor,
-                          onChanged: (color) {
-                            setState(() => selectedColor = color!);
-                          },
-                        ),
-                      ],
-                    )
-                  ],
+                      )
+                    ],
+                  ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
           actions: <Widget>[
             TextButton(

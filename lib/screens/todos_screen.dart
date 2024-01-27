@@ -21,42 +21,44 @@ class _TodosScrenState extends State<TodosScren> {
                   color: Colors.deepPurple,
                 ))
               : Scaffold(
-                  body: universalProvider.dataModel!.tasks.isEmpty
-                      ? Center(
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              SizedBox(
-                                height: 60.h,
-                              ),
-                              Image.asset(
-                                'assets/no_tasks.png',
-                                height: 300.h,
-                                width: 300.w,
-                              ),
-                              SizedBox(
-                                height: 40.h,
-                              ),
-                              Text(
-                                'Add a task and get to work on it!',
-                                style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 15.sp,
-                                  color: Colors.deepPurple.withOpacity(0.8),
+                  body: universalProvider.incompleteTask!.isEmpty
+                      ? SingleChildScrollView(
+                          child: Center(
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              children: [
+                                SizedBox(
+                                  height: 60.h,
                                 ),
-                              ),
-                              SizedBox(
-                                height: 5.h,
-                              ),
-                              Text(
-                                'Today is your canvas.',
-                                style: TextStyle(
-                                  color: Colors.deepPurple.withOpacity(0.8),
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 18.sp,
+                                Image.asset(
+                                  'assets/no_tasks.png',
+                                  height: 300.h,
+                                  width: 300.w,
                                 ),
-                              ),
-                            ],
+                                SizedBox(
+                                  height: 40.h,
+                                ),
+                                Text(
+                                  'Add a task and get to work on it!',
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 15.sp,
+                                    color: Colors.deepPurple.withOpacity(0.8),
+                                  ),
+                                ),
+                                SizedBox(
+                                  height: 5.h,
+                                ),
+                                Text(
+                                  'Today is your canvas.',
+                                  style: TextStyle(
+                                    color: Colors.deepPurple.withOpacity(0.8),
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 18.sp,
+                                  ),
+                                ),
+                              ],
+                            ),
                           ),
                         )
                       : Padding(
@@ -70,7 +72,7 @@ class _TodosScrenState extends State<TodosScren> {
                                   bottom: universalProvider
                                               .incompleteTask!.length ==
                                           index + 1
-                                      ? 150.h
+                                      ? 100.h
                                       : 10.h),
                               child: universalProvider.incompleteTask![index],
                             ),

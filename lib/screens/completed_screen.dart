@@ -21,42 +21,73 @@ class _CompletedScreenState extends State<CompletedScreen> {
                   color: Colors.deepPurple,
                 ))
               : Scaffold(
-                  body: universalProvider.dataModel!.tasks.isEmpty
-                      ? Center(
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              SizedBox(
-                                height: 60.h,
-                              ),
-                              Image.asset(
-                                'assets/no_tasks.png',
-                                height: 300.h,
-                                width: 300.w,
-                              ),
-                              SizedBox(
-                                height: 40.h,
-                              ),
-                              Text(
-                                'Add a task and get to work on it!',
-                                style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 15.sp,
-                                  color: Colors.deepPurple.withOpacity(0.8),
+                  body: universalProvider.completedTask!.isEmpty
+                      ? SingleChildScrollView(
+                          child: Center(
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              children: [
+                                SizedBox(
+                                  height: 60.h,
                                 ),
-                              ),
-                              SizedBox(
-                                height: 5.h,
-                              ),
-                              Text(
-                                'Today is your canvas.',
-                                style: TextStyle(
-                                  color: Colors.deepPurple.withOpacity(0.8),
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 18.sp,
+                                Image.asset(
+                                  'assets/no_completed_tasks.png',
+                                  height: 300.h,
+                                  width: 300.w,
                                 ),
-                              ),
-                            ],
+                                SizedBox(
+                                  height: 40.h,
+                                ),
+                                Text(
+                                  'Your canvas awaits!',
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 18.sp,
+                                    color: Colors.deepPurple.withOpacity(0.8),
+                                  ),
+                                ),
+                                SizedBox(
+                                  height: 5.h,
+                                ),
+                                Text(
+                                  "Let's add a new task and get to work.",
+                                  style: TextStyle(
+                                    color: Colors.deepPurple.withOpacity(0.8),
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 15.sp,
+                                  ),
+                                ),
+                                SizedBox(
+                                  height: 50.h,
+                                ),
+                                SizedBox(
+                                  width: 150.w,
+                                  child: TextButton(
+                                    style: TextButton.styleFrom(
+                                      foregroundColor: Colors.white,
+                                      backgroundColor: Colors.deepPurple,
+                                      shape: RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.all(
+                                          Radius.circular(8.r),
+                                        ),
+                                      ),
+                                    ),
+                                    onPressed: () {
+                                      universalProvider
+                                          .showAddTaskDialog(context);
+                                    },
+                                    child: Text(
+                                      'Add Task',
+                                      style: TextStyle(
+                                        fontSize: 14.sp,
+                                        color: Colors.white,
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
                           ),
                         )
                       : Padding(
@@ -66,12 +97,7 @@ class _CompletedScreenState extends State<CompletedScreen> {
                           child: ListView.builder(
                             itemCount: universalProvider.completedTask!.length,
                             itemBuilder: (context, index) => Padding(
-                              padding: EdgeInsets.only(
-                                  bottom:
-                                      universalProvider.completedTask!.length ==
-                                              index + 1
-                                          ? 150.h
-                                          : 10.h),
+                              padding: EdgeInsets.only(bottom: 10.h),
                               child: universalProvider.completedTask![index],
                             ),
                           ),

@@ -33,6 +33,7 @@ class MyApp extends StatelessWidget {
           title: 'ToDo',
           debugShowCheckedModeBanner: false,
           theme: ThemeData(
+            appBarTheme: const AppBarTheme(backgroundColor: Colors.white),
             scaffoldBackgroundColor: Colors.white,
             fontFamily: GoogleFonts.poppins().fontFamily,
           ),
