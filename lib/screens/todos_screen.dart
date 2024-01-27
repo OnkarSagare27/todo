@@ -59,11 +59,27 @@ class _TodosScrenState extends State<TodosScren> {
                             ],
                           ),
                         )
-                      : const Placeholder(),
+                      : Padding(
+                          padding: EdgeInsets.symmetric(
+                            horizontal: 16.w,
+                          ),
+                          child: ListView.builder(
+                            itemCount: universalProvider.incompleteTask!.length,
+                            itemBuilder: (context, index) => Padding(
+                              padding: EdgeInsets.only(
+                                  bottom: universalProvider
+                                              .incompleteTask!.length ==
+                                          index + 1
+                                      ? 150.h
+                                      : 10.h),
+                              child: universalProvider.incompleteTask![index],
+                            ),
+                          ),
+                        ),
                   floatingActionButton: FloatingActionButton(
                     backgroundColor: Colors.deepPurple,
                     child: const Icon(
-                      Icons.add,
+                      Icons.add_task_rounded,
                       color: Colors.white,
                     ),
                     onPressed: () =>

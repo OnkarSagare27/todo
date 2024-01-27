@@ -19,7 +19,6 @@ class _AddTaskDialogState extends State<AddTaskDialog> {
   @override
   void initState() {
     super.initState();
-
     selectedColor = Colors.deepPurple;
   }
 
@@ -161,8 +160,13 @@ class _AddTaskDialogState extends State<AddTaskDialog> {
                     titleError = 'Title cannot be empty';
                   });
                 } else {
-                  widget.onAddPressed(selectedColor, titleController.text,
-                      descriptionController.text);
+                  widget.onAddPressed(
+                    selectedColor,
+                    titleController.text,
+                    descriptionController.text.isEmpty
+                        ? null
+                        : descriptionController.text,
+                  );
                   Navigator.of(context).pop();
                 }
               },

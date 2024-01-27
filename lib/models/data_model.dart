@@ -1,4 +1,4 @@
-import '../models/task_model.dart';
+import 'package:todo/models/task_model.dart';
 
 class DataModel {
   int lastInd;

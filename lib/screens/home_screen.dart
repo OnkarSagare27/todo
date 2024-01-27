@@ -72,12 +72,12 @@ class _HomeScreenState extends State<HomeScreen> {
               BottomNavigationBarItem(
                 label: 'Tasks',
                 icon: Icon(
-                  Icons.list_rounded,
+                  Icons.format_list_numbered_rounded,
                 ),
               ),
               BottomNavigationBarItem(
                 label: 'Completed',
-                icon: Icon(Icons.done_all_rounded),
+                icon: Icon(Icons.task_alt_rounded),
               ),
             ],
           ),

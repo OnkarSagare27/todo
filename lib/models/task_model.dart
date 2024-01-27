@@ -1,22 +1,42 @@
 class TaskModel {
-  final int id;
-  final String name;
-  final String? description;
-  final String status;
-  final List<dynamic> argb;
+  int id;
+  String title;
+  String? description;
+  String status;
+  List<dynamic> argb;
 
   TaskModel({
     required this.id,
     required this.status,
-    required this.name,
+    required this.title,
     required this.argb,
     this.description,
   });
 
+  void setId(int newId) {
+    id = newId;
+  }
+
+  void setTitle(String newTitle) {
+    title = newTitle;
+  }
+
+  void setDescription(String? newDescription) {
+    description = newDescription;
+  }
+
+  void setStatus(String newStatus) {
+    status = newStatus;
+  }
+
+  void setArgb(List<dynamic> newArgb) {
+    argb = newArgb;
+  }
+
   Map<String, dynamic> toJson() {
     return {
       'id': id,
-      'name': name,
+      'title': title,
       'description': description,
       'status': status,
       'argb': argb
@@ -26,7 +46,7 @@ class TaskModel {
   factory TaskModel.fromJson(Map<String, dynamic> json) {
     return TaskModel(
         id: json['id'],
-        name: json['name'],
+        title: json['title'],
         description: json['description'],
         status: json['status'],
         argb: json['argb']);
