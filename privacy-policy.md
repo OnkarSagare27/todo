@@ -16,6 +16,6 @@ Policy Updates:
 We reserve the right to update or amend this Privacy Policy as needed. Any revisions will be reflected within the app and in the updated version of the Privacy Policy.
 
 Contact Information:
-If you have any inquiries or concerns regarding this Privacy Policy or the handling of your data within ToDo, please contact us at [onkarsagare27@gmai.com].
+If you have any inquiries or concerns regarding this Privacy Policy or the handling of your data within ToDo, please contact us at onkarsagare27@gmai.com.
 
-Last Updated: [2024-10-02]
+Last Updated: 2024-10-02
