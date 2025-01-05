@@ -107,7 +107,7 @@ class _EditTaskDialogState extends State<EditTaskDialog> {
                         child: Row(
                           children: [
                             Radio<Color>(
-                              fillColor: const MaterialStatePropertyAll(
+                              fillColor: const WidgetStatePropertyAll(
                                   Colors.deepPurple),
                               focusColor: Colors.deepPurple,
                               value: const Color.fromARGB(255, 103, 58, 183),
@@ -118,7 +118,7 @@ class _EditTaskDialogState extends State<EditTaskDialog> {
                             ),
                             Radio<Color>(
                               fillColor:
-                                  const MaterialStatePropertyAll(Colors.orange),
+                                  const WidgetStatePropertyAll(Colors.orange),
                               focusColor: Colors.orange,
                               value: const Color.fromARGB(255, 255, 152, 0),
                               groupValue: selectedColor,
@@ -128,7 +128,7 @@ class _EditTaskDialogState extends State<EditTaskDialog> {
                             ),
                             Radio<Color>(
                               fillColor:
-                                  const MaterialStatePropertyAll(Colors.blue),
+                                  const WidgetStatePropertyAll(Colors.blue),
                               focusColor: Colors.blue,
                               value: const Color.fromARGB(255, 33, 150, 243),
                               groupValue: selectedColor,
@@ -138,7 +138,7 @@ class _EditTaskDialogState extends State<EditTaskDialog> {
                             ),
                             Radio<Color>(
                               fillColor:
-                                  const MaterialStatePropertyAll(Colors.red),
+                                  const WidgetStatePropertyAll(Colors.red),
                               focusColor: Colors.red,
                               value: const Color.fromARGB(255, 244, 67, 54),
                               groupValue: selectedColor,
@@ -148,7 +148,7 @@ class _EditTaskDialogState extends State<EditTaskDialog> {
                             ),
                             Radio<Color>(
                               fillColor:
-                                  const MaterialStatePropertyAll(Colors.green),
+                                  const WidgetStatePropertyAll(Colors.green),
                               focusColor: Colors.green,
                               value: const Color.fromARGB(255, 76, 175, 80),
                               groupValue: selectedColor,
@@ -158,7 +158,7 @@ class _EditTaskDialogState extends State<EditTaskDialog> {
                             ),
                             Radio<Color>(
                               fillColor:
-                                  const MaterialStatePropertyAll(Colors.brown),
+                                  const WidgetStatePropertyAll(Colors.brown),
                               focusColor: Colors.brown,
                               value: const Color.fromARGB(255, 121, 85, 72),
                               groupValue: selectedColor,
@@ -168,7 +168,7 @@ class _EditTaskDialogState extends State<EditTaskDialog> {
                             ),
                             Radio<Color>(
                               fillColor:
-                                  const MaterialStatePropertyAll(Colors.yellow),
+                                  const WidgetStatePropertyAll(Colors.yellow),
                               focusColor: Colors.yellow,
                               value: const Color.fromARGB(255, 255, 235, 59),
                               groupValue: selectedColor,

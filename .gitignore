@@ -1,5 +1,7 @@
 android/app/upload-keystore.jks
 android/key.properties
+upload_certificate.pem
+
 # Miscellaneous
 
 *.class

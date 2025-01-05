@@ -96,7 +96,7 @@ class _AddTaskDialogState extends State<AddTaskDialog> {
                         child: Row(
                           children: [
                             Radio<Color>(
-                              fillColor: const MaterialStatePropertyAll(
+                              fillColor: const WidgetStatePropertyAll(
                                   Colors.deepPurple),
                               focusColor: Colors.deepPurple,
                               value: Colors.deepPurple,
@@ -107,7 +107,7 @@ class _AddTaskDialogState extends State<AddTaskDialog> {
                             ),
                             Radio<Color>(
                               fillColor:
-                                  const MaterialStatePropertyAll(Colors.orange),
+                                  const WidgetStatePropertyAll(Colors.orange),
                               focusColor: Colors.orange,
                               value: Colors.orange,
                               groupValue: selectedColor,
@@ -117,7 +117,7 @@ class _AddTaskDialogState extends State<AddTaskDialog> {
                             ),
                             Radio<Color>(
                               fillColor:
-                                  const MaterialStatePropertyAll(Colors.blue),
+                                  const WidgetStatePropertyAll(Colors.blue),
                               focusColor: Colors.blue,
                               value: Colors.blue,
                               groupValue: selectedColor,
@@ -127,7 +127,7 @@ class _AddTaskDialogState extends State<AddTaskDialog> {
                             ),
                             Radio<Color>(
                               fillColor:
-                                  const MaterialStatePropertyAll(Colors.red),
+                                  const WidgetStatePropertyAll(Colors.red),
                               focusColor: Colors.red,
                               value: Colors.red,
                               groupValue: selectedColor,
@@ -137,7 +137,7 @@ class _AddTaskDialogState extends State<AddTaskDialog> {
                             ),
                             Radio<Color>(
                               fillColor:
-                                  const MaterialStatePropertyAll(Colors.green),
+                                  const WidgetStatePropertyAll(Colors.green),
                               focusColor: Colors.green,
                               value: Colors.green,
                               groupValue: selectedColor,
@@ -147,7 +147,7 @@ class _AddTaskDialogState extends State<AddTaskDialog> {
                             ),
                             Radio<Color>(
                               fillColor:
-                                  const MaterialStatePropertyAll(Colors.brown),
+                                  const WidgetStatePropertyAll(Colors.brown),
                               focusColor: Colors.brown,
                               value: Colors.brown,
                               groupValue: selectedColor,
@@ -157,7 +157,7 @@ class _AddTaskDialogState extends State<AddTaskDialog> {
                             ),
                             Radio<Color>(
                               fillColor:
-                                  const MaterialStatePropertyAll(Colors.yellow),
+                                  const WidgetStatePropertyAll(Colors.yellow),
                               focusColor: Colors.yellow,
                               value: Colors.yellow,
                               groupValue: selectedColor,
